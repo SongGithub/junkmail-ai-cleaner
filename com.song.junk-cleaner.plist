@@ -6,8 +6,9 @@
     <string>com.song.junk-cleaner</string>
     <key>ProgramArguments</key>
     <array>
+        <!-- CUSTOMIZE: Update paths below to match your setup -->
         <string>/bin/bash</string>
-        <string>/Users/song/.openclaw/projects/outlook-junk-cleanup/run_junk_cleaner.sh</string>
+        <string>/ABSOLUTE/PATH/TO/run_junk_cleaner.sh</string>
     </array>
     <key>StartCalendarInterval</key>
     <dict>
