@@ -2,6 +2,23 @@
 
 Automated junk mail cleanup for Outlook using AI classification.
 
+## Usage
+
+Run standalone (from the project directory):
+```bash
+python3 batch_cleanup.py
+```
+
+Or set up automatic daily runs via launchd:
+```bash
+# Edit com.song.junk-cleaner.plist to set your paths, then:
+cp com.song.junk-cleaner.plist ~/Library/LaunchAgents/
+launchctl load ~/Library/LaunchAgents/com.song.junk-cleaner.plist
+```
+
+Before first run, configure `config.json` with your Outlook app credentials
+and refresh token (see Authentication section).
+
 ## Architecture
 
 1. **launchd** (`com.song.junk-cleaner.plist`) — runs `run_junk_cleaner.sh` daily at 08:00 via macOS scheduler
