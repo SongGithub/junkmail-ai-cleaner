@@ -27,6 +27,14 @@ report to Discord, but the cleanup itself has no dependency on OpenClaw.
 
 ## Requirements
 
-- macOS with Ollama running (qwen3:8b model)
-- Outlook Graph API credentials (refresh token)
-- Python 3 with required packages
+### Hardware
+
+- **RAM:** 16 GB minimum (qwen3:8b uses ~5.5 GB + 128K context overhead ~2-3 GB)
+- **OS:** macOS (for launchd; can adapt to cron/systemd on Linux)
+- **GPU:** Metal (Apple Silicon) recommended — 100% GPU inference gives ~45-50 tok/s
+
+### Software
+
+- [Ollama](https://ollama.com) running locally with `qwen3:8b` model
+- Outlook Graph API credentials (refresh token via Microsoft Entra)
+- Python 3 with `requests`, `msal`, `json` packages
