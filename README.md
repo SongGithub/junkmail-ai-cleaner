@@ -38,3 +38,20 @@ report to Discord, but the cleanup itself has no dependency on OpenClaw.
 - [Ollama](https://ollama.com) running locally with `qwen3:8b` model
 - Outlook Graph API credentials (refresh token via Microsoft Entra)
 - Python 3 with `requests`, `msal`, `json` packages
+- Node.js (for get_refresh_token.js helper)
+## Authentication (Outlook / Microsoft Graph)
+
+The script uses OAuth 2.0 device code flow to access Outlook mail folders:
+
+1. Register an app in Microsoft Entra with:
+   - Redirect URI: `http://localhost` (mobile/desktop)
+   - API permission: `Mail.ReadWrite` (delegated)
+2. Put the `client_id` (and tenant if not `consumers`) in `config.json`
+3. Store the refresh token in macOS keychain:
+   ```
+   security add-generic-password -a "$USER" -s outlook-refresh -w "YOUR_REFRESH_TOKEN"
+   ```
+4. The script uses a Node.js helper (`get_refresh_token.js`) to read the token from keychain and obtain an access token via MSAL
+
+The refresh token is not stored in config.json - only the `client_id` and `tenant_id` are.
+
