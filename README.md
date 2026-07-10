@@ -29,7 +29,7 @@ report to Discord, but the cleanup itself has no dependency on OpenClaw.
 
 ### Hardware
 
-- **RAM:** 16 GB minimum (qwen3:8b uses ~5.5 GB + 128K context overhead ~2-3 GB)
+- **RAM:** 24 GB minimum, 32 GB recommended (qwen3:8b uses ~9 GB GPU, macOS ~4-6 GB, other apps ~2-4 GB)
 - **OS:** macOS (for launchd; can adapt to cron/systemd on Linux)
 - **GPU:** Metal (Apple Silicon) recommended — 100% GPU inference gives ~45-50 tok/s
 
