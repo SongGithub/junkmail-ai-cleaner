@@ -1,0 +1,39 @@
+{
+  "microsoft_graph": {
+    "client_id": "084a3e9f-a9f4-43f7-89f9-d229cf97853e",
+    "tenant_id": "consumers",
+    "authority_url": "https://login.microsoftonline.com/consumers/oauth2/v2.0/token",
+    "junk_folder_id": "AQMkADAwATNiZmYAZC04YTAxLWNhMzEtMDACLTAwCgAuAAADoyOBwupjsk22TZwUbXZZUAEAEZZGC8mcp0uDjD3l1C2N4gAAAgEiAAAA",
+    "shopping_folder_id": "AQMkADAwATNiZmYAZC04YTAxLWNhMzEtMDACLTAwCgAuAAADoyOBwupjsk22TZwUbXZZUAEAEZZGC8mcp0uDjD3l1C2N4gAAAgFaAAAA"
+  },
+  "ollama": {
+    "url": "http://localhost:11434/api/generate",
+    "model": "qwen3:8b",
+    "batch_size": 20,
+    "timeout_seconds": 120
+  },
+  "workspace": {
+    "project_root": "/Users/song/.openclaw/projects/outlook-junk-cleanup",
+    "log_file": "cleanup-log.txt",
+    "heartbeat_file": "cleanup-heartbeat.txt",
+    "patterns_file": "spam-patterns.md",
+    "new_patterns_file": "new-patterns.txt"
+  },
+  "tuning": {
+    "fetch_batch": 200,
+    "delete_delay_seconds": 0.25,
+    "batch_pause_seconds": 1.0,
+    "heartbeat_every_seconds": 30,
+    "retry_limit": 3,
+    "pattern_threshold": 2
+  },
+  "rules": {
+    "auto_create_rules": true,
+    "rule_sequence": 999,
+    "rule_actions": {
+      "mark_as_read": true,
+      "delete": true,
+      "stop_processing": true
+    }
+  }
+}
