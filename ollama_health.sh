@@ -5,7 +5,8 @@
 
 set -uo pipefail
 
-WORKSPACE="/Users/song/.openclaw/projects/outlook-junk-cleanup"
+# CUSTOMIZE: Set your project path below
+WORKSPACE="/ABSOLUTE/PATH/TO/outlook-junk-cleanup"
 HEALTH_LOG="$WORKSPACE/ollama-health.jsonl"
 TIMESTAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 

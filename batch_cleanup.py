@@ -21,7 +21,8 @@ from pathlib import Path
 from datetime import datetime
 
 # ── Config (load from config.json) ────────────────────────────────────────────
-WORKSPACE = Path("/Users/song/.openclaw/projects/outlook-junk-cleanup")
+# CUSTOMIZE: Set your project path below
+WORKSPACE = Path("/ABSOLUTE/PATH/TO/outlook-junk-cleanup")
 CONFIG_FILE = WORKSPACE / "config.json"
 
 def load_config():

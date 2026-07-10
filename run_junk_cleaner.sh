@@ -2,7 +2,9 @@
 # Junk cleaner wrapper - runs cleanup and outputs targeted summary only
 # Agent should NOT read any files directly - all needed info is here
 
-cd /Users/song/.openclaw/projects/outlook-junk-cleanup
+# CUSTOMIZE: Set your project path below
+PROJECT_ROOT="/ABSOLUTE/PATH/TO/outlook-junk-cleanup"
+cd "$PROJECT_ROOT"
 
 # Pre-flight health check
 bash ollama_health.sh > /dev/null 2>&1
