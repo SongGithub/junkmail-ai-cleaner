@@ -3,3 +3,5 @@ new-patterns.txt
 cleanup-log.txt
 ollama-health.jsonl
 config.json
+__pycache__/
+*.pyc
