@@ -10,9 +10,9 @@ Flow:
   5. Log everything + write heartbeat JSON
 
 Run standalone:
-  python3 ~/code/outlook-junk-cleanup/batch_cleanup.py
+  python3 batch_cleanup.py
 
-Orchestrated by OpenClaw cron — see cron-setup.md
+Or schedule daily via launchd (see com.song.junk-cleaner.plist)
 """
 
 import json, time, subprocess, sys, ssl, re
