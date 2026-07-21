@@ -1,0 +1,6 @@
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+# E401: compact `import a, b` one-liners are this repo's idiom
+ignore = ["E401"]

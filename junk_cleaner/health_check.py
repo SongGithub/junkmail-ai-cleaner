@@ -15,7 +15,7 @@ def _get_free_mem_mb() -> float:
             elif "Pages inactive" in line:
                 inactive = int(line.split(":")[1].strip().rstrip("."))
         return (free + inactive) * page_size / 1024 / 1024
-    except:
+    except Exception:
         return 0.0
 
 
@@ -29,7 +29,7 @@ def preflight_check() -> dict:
     # 1. Ping Ollama API
     t0 = time.time()
     try:
-        r = urllib.request.urlopen("http://localhost:11434/api/tags", timeout=5)
+        urllib.request.urlopen("http://localhost:11434/api/tags", timeout=5)
         result["ollama_ping_s"] = round(time.time() - t0, 3)
         result["ollama_reachable"] = True
     except Exception as e:
@@ -48,7 +48,7 @@ def preflight_check() -> dict:
         with urllib.request.urlopen(req, timeout=5) as resp:
             show = json.loads(resp.read())
         result["model_loaded"] = show.get("modelfile", "") != ""
-    except:
+    except Exception:
         result["model_loaded"] = False
 
     # 3. Quick inference test

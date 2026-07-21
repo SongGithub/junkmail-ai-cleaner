@@ -1,8 +1,8 @@
 """Main cleanup orchestration."""
 import time, sys, traceback
-from junk_cleaner.config import LLM_MODEL, FETCH_BATCH, LLM_BATCH_SIZE, DELETE_DELAY, BATCH_PAUSE, log, heartbeat
+from junk_cleaner.config import LLM_MODEL, FETCH_BATCH, LLM_BATCH_SIZE, DELETE_DELAY, BATCH_PAUSE, PATTERN_THRESHOLD, log, heartbeat
 from junk_cleaner.graph_client import get_access_token, fetch_junk_batch, graph_delete
-from junk_cleaner.spam_patterns import fast_match, track_new_pattern, log_new_patterns, create_outlook_rule, NEW_PATTERNS_LOG, PATTERN_THRESHOLD
+from junk_cleaner.spam_patterns import fast_match, track_new_pattern, log_new_patterns, create_outlook_rule, NEW_PATTERNS_LOG
 from junk_cleaner.ollama_client import classify as llm_classify
 from junk_cleaner.health_check import preflight_check
 

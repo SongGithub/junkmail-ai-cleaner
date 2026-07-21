@@ -1,6 +1,6 @@
 """Ollama API client for LLM-based spam classification."""
 import json, re, time, urllib.request
-from junk_cleaner.config import OLLAMA_URL, LLM_MODEL, LLM_BATCH_SIZE, log, health_log
+from junk_cleaner.config import OLLAMA_URL, LLM_MODEL, log, health_log
 
 LLM_SYSTEM = """You are an email spam classifier. For each email decide: DELETE (spam/junk) or KEEP (legitimate).
 Spam: unsolicited US ads, debt/loan/tax relief, home services, legal solicitation,

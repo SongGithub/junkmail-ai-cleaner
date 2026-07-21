@@ -1,11 +1,16 @@
 #!/bin/bash
-# Junk cleaner wrapper - runs cleanup and outputs targeted summary only
+# Junk cleaner wrapper - preflight, cleanup, and targeted summary
 # Agent should NOT read any files directly - all needed info is here
 
-cd /ABSOLUTE/PATH/TO/outlook-junk-cleanup
+cd "$(dirname "$0")"
 
-# Pre-flight health check
-bash ollama_health.sh > /dev/null 2>&1
+# Preflight: fail loudly BEFORE touching the mailbox, so a broken
+# dependency (token, Graph, Ollama) is visible in launchd logs / summary
+echo "=== PREFLIGHT ==="
+if ! python3 -m junk_cleaner.preflight; then
+    echo "=== ABORTED: preflight failed — mailbox untouched ==="
+    exit 1
+fi
 
 # Run cleanup (output suppressed to save agent context)
 python3 batch_cleanup.py > /dev/null 2>&1

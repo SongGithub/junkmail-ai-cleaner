@@ -1,0 +1,12 @@
+{
+  "name": "junkmail-ai-cleaner",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Keychain token helper for the junk mail cleaner (see get_refresh_token.js)",
+  "scripts": {
+    "get-token": "node get_refresh_token.js"
+  },
+  "dependencies": {
+    "keytar": "^7.9.0"
+  }
+}

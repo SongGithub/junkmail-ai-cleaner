@@ -1,10 +1,11 @@
 """Config loading, shared constants, and logging utilities."""
-import json, time, sys
+import json, os, time, sys
 from pathlib import Path
 from datetime import datetime
 
-# CUSTOMIZE: Set your project path below
-WORKSPACE = Path("/ABSOLUTE/PATH/TO/outlook-junk-cleanup")
+# Workspace = where config.json and runtime artifacts live.
+# Defaults to the repo root; override with JUNK_CLEANER_HOME for custom deploys.
+WORKSPACE = Path(os.environ.get("JUNK_CLEANER_HOME") or Path(__file__).resolve().parents[1])
 CONFIG_FILE = WORKSPACE / "config.json"
 
 def load_config():
