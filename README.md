@@ -72,3 +72,9 @@ The script uses OAuth 2.0 device code flow to access Outlook mail folders:
 
 The refresh token is not stored in config.json - only the `client_id` and `tenant_id` are.
 
+For personal accounts, `tenant_id` must be `consumers` — with the default
+`common` authority, refresh tokens are rejected on renewal and sessions die
+within about an hour. See
+[docs/outlook-auth-troubleshooting.md](docs/outlook-auth-troubleshooting.md)
+for this and the browser-flow `redirect_uri` failure mode.
+
