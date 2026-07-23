@@ -1,4 +1,4 @@
 # Development / CI only — the runtime is stdlib-only by design (see README)
 pytest>=8.0
-ruff>=0.4
+ruff>=0.15.22
 pip-audit>=2.7
