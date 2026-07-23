@@ -60,7 +60,27 @@ def heartbeat(stats: dict, force: bool = False):
     if not force and now - _last_heartbeat < HEARTBEAT_EVERY:
         return
     _last_heartbeat = now
-    payload = {**stats, "ts": datetime.now().isoformat(timespec="seconds")}
+
+    # Accumulate with existing heartbeat if same day (multiple runs)
+    prev = {}
+    try:
+        with open(HEARTBEAT_FILE) as f:
+            prev = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        pass
+    if prev.get("ts", "")[:10] == datetime.now().isoformat()[:10]:
+        # Same day — sum numeric fields
+        merged = {}
+        for k in ("deleted", "kept", "fast", "llm", "llm_calls", "failed"):
+            merged[k] = stats.get(k, 0) + prev.get(k, 0)
+        merged["batch"] = stats.get("batch", 0) + prev.get("batch", 0)
+        if stats.get("error"):
+            merged["error"] = stats["error"]
+        merged["ts"] = datetime.now().isoformat(timespec="seconds")
+        payload = merged
+    else:
+        payload = {**stats, "ts": datetime.now().isoformat(timespec="seconds")}
+
     with open(HEARTBEAT_FILE, "w") as f:
         json.dump(payload, f, indent=2)
 
