@@ -26,6 +26,8 @@ def main():
         token = get_access_token()
     except Exception as e:
         log(f"FATAL: {e}")
+        heartbeat({"deleted": 0, "kept": 0, "fast": 0, "llm": 0,
+                   "llm_calls": 0, "failed": 1, "batch": 0, "error": str(e)}, force=True)
         sys.exit(1)
 
     stats = {"deleted": 0, "kept": 0, "fast": 0, "llm": 0,
