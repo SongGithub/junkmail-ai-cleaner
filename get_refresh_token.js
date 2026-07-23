@@ -8,6 +8,9 @@
  * the same library the MCP server uses — which avoids the GUI approval
  * prompt that `security find-generic-password -w` triggers under launchd.
  *
+ * The keychain often has two refresh tokens for the same MSA account.
+ * We must pick the valid one (the other is expired but still listed).
+ *
  * Output: the refresh token on stdout.
  * Exit codes: 2 = no keychain entry, 3 = no refresh token in cache,
  *             4 = keytar not installed (run `npm install`).
@@ -22,8 +25,6 @@ try {
 
 const SERVICE = process.env.MS365_KEYCHAIN_SERVICE || 'ms-365-mcp-server';
 const ACCOUNT = process.env.MS365_KEYCHAIN_ACCOUNT || 'msal-token-cache';
-// Fixed tenant GUID Microsoft uses for all personal (MSA) accounts
-const MSA_TENANT = '9188040d-6c67-4c5b-b112-36a304b66dad';
 
 async function main() {
   const raw = await keytar.getPassword(SERVICE, ACCOUNT);
@@ -40,10 +41,11 @@ async function main() {
     process.exit(3);
   }
 
-  // Prefer the personal-account (consumers) token over any stale
-  // common-tenant one; those die on refresh (see docs/outlook-auth-troubleshooting.md)
-  const msa = tokens.find(t => (t.home_account_id || '').includes(MSA_TENANT));
-  console.log((msa || tokens[0]).secret);
+  // The keychain may contain stale/expired tokens alongside valid ones.
+  // The valid MSA artifact token contains "MsaArtifacts" in its secret value.
+  // Try that first, then fall back to the last token in the list (newest).
+  const msa = tokens.find(t => (t.secret || '').includes('MsaArtifacts'));
+  console.log((msa || tokens[tokens.length - 1]).secret);
 }
 
 main().catch(err => {
