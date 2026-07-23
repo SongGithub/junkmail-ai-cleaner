@@ -81,7 +81,7 @@ def graph_delete(msg_id: str, token: str) -> bool:
         try:
             req = urllib.request.Request(url, method="DELETE")
             req.add_header("Authorization", f"Bearer {token}")
-            with urllib.request.urlopen(req, timeout=30, context=_SSL) as resp:
+            with urllib.request.urlopen(req, timeout=30, context=_SSL):
                 return True
         except urllib.error.HTTPError as e:
             if e.code == 204:

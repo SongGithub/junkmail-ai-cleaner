@@ -1,0 +1,32 @@
+{"subject": "Find your perfect match this weekend", "sender": "eHarmony", "sender_email": "offers@eharmony-mail.com", "label": "spam"}
+{"subject": "Your CarShield protection quote is ready", "sender": "CarShield Auto", "sender_email": "quote@carshield-offers.net", "label": "spam"}
+{"subject": "Metal roof replacement — free estimate", "sender": "Home Improvement Deals", "sender_email": "info@roofdeals.example", "label": "spam"}
+{"subject": "Erase your debt today", "sender": "National Debt Relief", "sender_email": "help@nationaldebt.example", "label": "spam"}
+{"subject": "Hearing aid breakthrough doctors don't want you to know", "sender": "SoundLift", "sender_email": "news@soundlift.example", "label": "spam"}
+{"subject": "Your Telstra account is suspended - verify now", "sender": "Telstra", "sender_email": "support@telstra-verify.xyz", "label": "spam"}
+{"subject": "Canvas prints 85% off final hours", "sender": "Easy Canvas Prints", "sender_email": "deals@easycanvas.example", "label": "spam"}
+{"subject": "Your home's equity could pay for that renovation", "sender": "Rate Equity Watch", "sender_email": "rates@rateequity.example", "label": "spam"}
+{"subject": "LifeLine Screening: 5 tests for $149", "sender": "Life Line Screening", "sender_email": "appointments@lifeline.example", "label": "spam"}
+{"subject": "Congratulations! You've been selected for a $500 gift card", "sender": "Rewards Center", "sender_email": "winner@pulsecertain.example", "label": "spam"}
+{"subject": "Re: your invoice #8847 is overdue - pay immediately", "sender": "Billing Department", "sender_email": "billing@byteheroic.example", "label": "spam"}
+{"subject": "Your Bitcoin wallet has been credited with 0.5 BTC", "sender": "Crypto Support", "sender_email": "support@popcornjoast.example", "label": "spam"}
+{"subject": "Unusual sign-in activity - verify your account now", "sender": "Account Security", "sender_email": "no-reply@arraylush.example", "label": "spam"}
+{"subject": "Generic Viagra 90% discount no prescription needed", "sender": "Online Pharmacy", "sender_email": "meds@tollstank.example", "label": "spam"}
+{"subject": "Last chance: extend your car warranty before it expires", "sender": "Vehicle Services Dept", "sender_email": "renewals@intensenode.example", "label": "spam"}
+{"subject": "Hot singles in your area want to meet you", "sender": "DateMatch", "sender_email": "match@listbless.example", "label": "spam"}
+{"subject": "IRS Notice: you qualify for tax debt forgiveness", "sender": "Tax Relief Advocates", "sender_email": "notice@hardispute.example", "label": "spam"}
+{"subject": "Your package could not be delivered - update address", "sender": "Delivery Notification", "sender_email": "tracking@netbootlace.example", "label": "spam"}
+{"subject": "Dinner on Saturday?", "sender": "Alice Chen", "sender_email": "alice.chen@gmail.com", "label": "ham"}
+{"subject": "Your Amazon order #112-889 has shipped", "sender": "Amazon.com", "sender_email": "ship-confirm@amazon.com", "label": "ham"}
+{"subject": "Your Telstra bill is ready", "sender": "Telstra", "sender_email": "noreply@telstra.com.au", "label": "ham"}
+{"subject": "Receipt for your payment to Netflix", "sender": "PayPal", "sender_email": "service@paypal.com", "label": "ham"}
+{"subject": "Your appointment is confirmed for Tuesday 2pm", "sender": "City Dental", "sender_email": "reception@citydental.com.au", "label": "ham"}
+{"subject": "Statement available for account ending 4471", "sender": "Chase", "sender_email": "no.reply.alerts@chase.com", "label": "ham"}
+{"subject": "Weekly digest: 12 new answers to your questions", "sender": "Stack Overflow", "sender_email": "do-not-reply@stackoverflow.email", "label": "ham"}
+{"subject": "Your boarding pass for flight QF12", "sender": "Qantas", "sender_email": "noreply@qantas.com.au", "label": "ham"}
+{"subject": "Password reset requested for your GitHub account", "sender": "GitHub", "sender_email": "noreply@github.com", "label": "ham"}
+{"subject": "School newsletter - term 3 week 2", "sender": "Wilson Primary School", "sender_email": "admin@wilsonprimary.edu.au", "label": "ham"}
+{"subject": "Your Fidelity quarterly statement is ready", "sender": "Fidelity Investments", "sender_email": "statements@fidelity.com", "label": "ham", "known_gap": "rules", "note": "KNOWN_PATTERNS 'fidelity'/'fidelity.com' matches legitimate statements"}
+{"subject": "Your Toronto hotel booking confirmation", "sender": "Booking.com", "sender_email": "noreply@booking.com", "label": "ham", "known_gap": "rules", "note": "KNOWN_PATTERNS 'toronto' is far too broad"}
+{"subject": "ADT home security invoice for July", "sender": "ADT", "sender_email": "billing@adt.com", "label": "ham", "known_gap": "rules", "note": "KNOWN_PATTERNS 'home security' matches the real provider's invoices"}
+{"subject": "Your HELOC application status", "sender": "Bank of America", "sender_email": "onlinebanking@bofa.com", "label": "ham", "known_gap": "rules", "note": "KNOWN_PATTERNS 'heloc'/'home equity' matches real bank correspondence"}

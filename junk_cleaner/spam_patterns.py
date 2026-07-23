@@ -1,10 +1,7 @@
 """Known spam patterns (fast-path), pattern tracking, and Outlook rule creation."""
 import json, urllib.request
 from datetime import datetime
-from junk_cleaner.config import (
-    WORKSPACE, GRAPH_BASE, NEW_PATTERNS_FILE,
-    PATTERN_THRESHOLD, CFG, log
-)
+from junk_cleaner.config import GRAPH_BASE, NEW_PATTERNS_FILE, CFG, log
 
 # ── Known spam patterns (fast-path, no LLM needed) ───────────────────────────
 # Format: { "Category": ["keyword1", "keyword2", ...] }
@@ -79,7 +76,6 @@ def fast_match(subject: str, sender_name: str, sender_email: str = ""):
 NEW_PATTERNS_LOG = {}
 
 def extract_brand_from_email(subject: str, sender: str, llm_category: str = None) -> dict:
-    text = f"{subject} {sender}".lower()
     relay_domains = {"@", "ilyclicker", "pulsecertain", "comebeach", "mytontrash",
         "henryfluns", "votalisman", "byteheroic", "popcornjoast", "ovesizzling",
         "arraylush", "tollstank", "listbless", "hardispute", "intensenode",
@@ -143,7 +139,7 @@ def create_outlook_rule(brand: str, keywords: list, token: str) -> bool:
     req.add_header("Authorization", f"Bearer {token}")
     req.add_header("Content-Type", "application/json")
     try:
-        with urllib.request.urlopen(req, timeout=30) as resp:
+        with urllib.request.urlopen(req, timeout=30):
             log(f"  [rule-create] OK {brand}")
             return True
     except urllib.error.HTTPError as e:
