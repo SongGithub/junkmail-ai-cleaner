@@ -4,6 +4,7 @@ Automated junk mail cleanup for Outlook using AI classification. Two-tier
 design: known spam is deleted by fast keyword rules; unknowns are classified
 by a **local** LLM (Ollama), so mail content never leaves your machine except
 to Microsoft Graph itself.
+![Uploading Screenshot 2026-10-09 at 12.32.44 pm.png…]()
 
 ## Why this design
 
