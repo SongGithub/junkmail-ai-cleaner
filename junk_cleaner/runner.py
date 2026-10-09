@@ -32,15 +32,14 @@ def main():
 
     stats = {"deleted": 0, "kept": 0, "fast": 0, "llm": 0,
              "llm_calls": 0, "failed": 0, "batch": 0}
-    skip = 0
 
     try:
         while True:
             stats["batch"] += 1
             log(f"\n{'─'*50}")
-            log(f"Batch {stats['batch']} — fetching {FETCH_BATCH} emails (offset={skip})")
+            log(f"Batch {stats['batch']} — fetching up to {FETCH_BATCH} emails")
             heartbeat(stats)
-            emails = fetch_junk_batch(token, skip)
+            emails = fetch_junk_batch(token)
             if not emails:
                 log("No more emails — done.")
                 break
@@ -111,15 +110,20 @@ def main():
                             log(f"  KEEP[llm/{category}] {subject[:65]}")
                         heartbeat(stats)
 
-            skip += FETCH_BATCH
             if len(emails) == FETCH_BATCH:
                 log(f"Batch {stats['batch']} done — pausing {BATCH_PAUSE}s...")
                 time.sleep(BATCH_PAUSE)
 
     except KeyboardInterrupt:
         log("\n[interrupted]")
+        stats["failed"] += 1
+        heartbeat(stats, force=True)
+        sys.exit(130)
     except Exception as e:
+        stats["failed"] += 1
         log(f"\n[fatal] {e}\n{traceback.format_exc()}")
+        heartbeat({**stats, "error": str(e)}, force=True)
+        sys.exit(1)
 
     log("\n" + "=" * 60)
     log("=== COMPLETE ===")
@@ -139,3 +143,7 @@ def main():
                 create_outlook_rule(brand, data["keywords"], token)
                 time.sleep(0.5)
     heartbeat(stats, force=True)
+
+
+if __name__ == "__main__":
+    main()
