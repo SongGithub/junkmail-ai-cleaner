@@ -5,6 +5,19 @@ design: known spam is deleted by fast keyword rules; unknowns are classified
 by a **local** LLM (Ollama), so mail content never leaves your machine except
 to Microsoft Graph itself.
 
+## Why this design
+
+This project is designed around a simple operational judgement: an email classifier should fail conservatively because a false positive can be more damaging than missed spam.
+
+The privacy boundary is deliberate. Microsoft Graph is used to read the junk folder and apply the resulting mailbox action, but classification runs locally through Ollama. The cleaner sends only the selected message metadata (subject and sender) to the local model; it does not send email content to a hosted AI service. Refresh tokens remain in the macOS Keychain, and runtime configuration is kept outside version control.
+
+The design also keeps the control loop observable and recoverable. Preflight checks validate the dependencies before the mailbox is touched, malformed or missing model output defaults to KEEP, deletes are recoverable through Deleted Items, and the evaluation gate treats deleted legitimate mail as a release-blocking failure.
+
+This is intentionally a single-user local tool. That boundary avoids introducing shared mailbox infrastructure or routing other people’s email through a multi-tenant service. The result is a practical example of privacy-aware AI automation where the architecture, failure modes, and operational limits are explicit.
+
+
+
+
 ## Quick start (turnkey)
 
 ```bash
